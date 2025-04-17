@@ -1,0 +1,89 @@
+body {
+  background: #000;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+#piano {
+  position: relative;
+  width: 784px;
+  height: 200px;
+  margin: 40px auto;
+  background: #222;
+  border-radius: 10px;
+  border: 2px solid #600;
+  border-top: 6px solid #900;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  user-select: none;
+  display: flex;
+  align-items: flex-end;
+}
+
+.key.white {
+  width: 56px;
+  height: 194px;
+  background: #f9f9ed;
+  border: 1px solid #bbb;
+  margin-right: -1px;
+  z-index: 1;
+  position: relative;
+  border-radius: 0 0 5px 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2) inset;
+  transition: background 0.1s, box-shadow 0.1s;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.key.black {
+  width: 36px;
+  height: 120px;
+  background: #222;
+  border: 1px solid #111;
+  position: absolute;
+  top: 0;
+  z-index: 2;
+  border-radius: 0 0 5px 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5) inset, 0 -2px 2px rgba(255,255,255,0.1) inset;
+  transition: background 0.1s, box-shadow 0.1s;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.key.white.active {
+  background: linear-gradient(to bottom, #b6e388 0%, #e8ffe8 80%, #e8ffe8 100%);
+  box-shadow: 0 0 16px #b6e388, 0 2px 5px rgba(0,0,0,0.2) inset;
+  border: 2px solid #8bc34a;
+}
+
+.key.black.active {
+  background: linear-gradient(to bottom, #8bc34a 0%, #b6e388 80%, #e8ffe8 100%);
+  box-shadow: 0 0 18px #8bc34a, 0 2px 5px rgba(0,0,0,0.5) inset;
+  border: 2px solid #b6e388;
+}
+
+/* Nuty lecące w górę */
+#falling-notes {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 784px;
+  height: 200px;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.note-rect {
+  position: absolute;
+  border-radius: 6px;
+  opacity: 0.85;
+  box-shadow: 0 0 16px #b6e388;
+  transition: opacity 0.2s;
+  border: 2px solid #8bc34a;
+  /* Zielony gradient jak aktywny klawisz */
+  background: linear-gradient(to top, #b6e388 0%, #e8ffe8 80%, #e8ffe8 100%);
+}
